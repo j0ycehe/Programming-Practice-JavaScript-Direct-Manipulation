@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Load the Paper.js library -->
+<script type="text/javascript" src="js/paper.js"></script>
+<!-- Define inlined PaperScript associate it with myCanvas -->
+<script type="text/paperscript" canvas="myCanvas">
+    var myPath;
+
+    function onMouseDown(event) {
+        myPath = new Path();
+        myPath.strokeColor = 'black';
+            
+        var myCircle = new Path.Circle({
+            center: event.point,
+            radius: 10
+        });
+    
+        myCircle.style = {
+            fillColor: 'blue',
+            strokeColor: 'red',
+            strokeWidth: 1.5
+        };
+    }
+    
+    function onMouseDrag(event) {
+        myPath.add(event.point);
+    }
+    
+    function onMouseUp(event) {
+            
+        var myCircle = new Path.Circle({
+            center: event.point,
+            radius: 10
+        });
+        myCircle.style = {
+            fillColor: 'red',
+            strokeColor: 'blue',
+            strokeWidth: 1.5
+        };
+    }
+</script>
+</head>
+<body>
+	<canvas id="myCanvas" resize></canvas>
+</body>
+</html>
